@@ -1,0 +1,47 @@
+@mixin button($width, $height, $fSize, $color, $bgColor, $bgColorHover) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $width;
+  height: $height;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: $fSize;
+  font-weight: 500;
+  color: #fff;
+  background-color: $bgColor;
+  cursor: pointer;
+  transition: background-color .2s;
+
+  &:focus {
+    border: 2px solid $color;
+  }
+
+  &:hover {
+    background-color: $bgColorHover;
+  }
+
+  &:active {
+    background-color: $color;
+    color: $bgColor;
+  }
+
+  &:disabled {
+    filter: opacity(.3);
+    cursor: default;
+  }
+}
+
+@mixin link($color, $hoverColor, $activeColor) {
+  color: $color;
+  transition: color .2s;
+
+  &:hover {
+    color: $hoverColor;
+  }
+
+  &:active {
+    color: $activeColor;
+  }
+}
