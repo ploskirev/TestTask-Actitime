@@ -35,6 +35,10 @@ export default {
   color: $accent;
 }
 
+*:focus {
+    outline-color: $third;
+  }
+
 #app {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;

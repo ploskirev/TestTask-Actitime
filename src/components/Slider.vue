@@ -10,6 +10,7 @@
         v-for="btn of pages" 
         :key="btn" 
         @click="changeSlide(btn)"
+        tabindex="0"
       >
       </button>
     </div>
@@ -96,6 +97,10 @@ export default {
     background-color: #fff;
     margin: 0 8.1px;
     cursor: pointer;
+
+    &:focus {
+      border: 1px solid $third;
+    }
 
     &_active {
       width: 10px;

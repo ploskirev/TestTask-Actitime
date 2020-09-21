@@ -1,15 +1,15 @@
 <template>
   <header class="header">
-    <Logo :colored="true" />
+    <Logo :colored="true" tabindex="0" />
     <input type="checkbox" id="menu-toggler" v-model="menuToggle">
     <div class="nav-btn-wrapper">
       <nav class="main-menu">
         <input type="checkbox" id="submenu-toggler" v-model="submenuToggle">
         <ul class="main-menu__general">
           <li class="main-menu__item" @click="updateMenu">
-            <router-link class="main-menu__link" to="/about">about</router-link>
+            <router-link class="main-menu__link" to="/about" tabindex="0">about</router-link>
           </li>
-          <li class="main-menu__item main-menu__item_subcontainer">
+          <li class="main-menu__item main-menu__item_subcontainer" tabindex="0">
             <label for="submenu-toggler" class="main-menu__submenu-label">
               Help
               <div class="main-menu__arrow"></div>
@@ -19,6 +19,7 @@
                 <router-link 
                   class="main-menu__link" 
                   to="/userguide"
+                  tabindex="0"
                 >
                   User&nbsp;Guide
                 </router-link>
@@ -27,6 +28,7 @@
                 <router-link 
                   class="main-menu__link" 
                   to="/support"
+                  tabindex="0"
                 >
                   Contact&nbsp;Support
                 </router-link>
@@ -34,7 +36,7 @@
             </ul>
           </li>
           <li class="main-menu__item" @click="updateMenu">
-            <router-link class="main-menu__link" to="/">Features</router-link>
+            <router-link class="main-menu__link" to="/" tabindex="0">Features</router-link>
           </li>
         </ul>
       </nav>
@@ -42,12 +44,13 @@
         <router-link 
           to="/registration" 
           class="button"
+          tabindex="0"
         >
           {{user ? 'Logout' : 'Sign Up'}}
         </router-link>
       </div>
     </div>
-    <label for="menu-toggler" class="header__burger">
+    <label for="menu-toggler" class="header__burger" tabindex="-1">
       <div></div>
     </label>
   </header>

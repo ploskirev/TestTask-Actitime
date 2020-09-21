@@ -2,7 +2,7 @@
   <article class="post" :class="{post_new: item.isNew}">
     <h2 class="post__heading">{{item.heading}}</h2>
     <p class="post__text">{{item.text}}</p>
-    <router-link :to="`/feature/${item.id}`" class="post__link">
+    <router-link :to="`/feature/${item.id}`" class="post__link" tabindex="0">
       Learn more
       <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
         <path d="M15 15.0007L21 8.00073L15 1.00073" stroke="#9C69E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

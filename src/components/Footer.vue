@@ -1,10 +1,10 @@
 <template>
   <footer class="footer">
     <div class="content">
-      <Logo :colored="false" class="logo-wrapper" />
+      <Logo :colored="false" class="logo-wrapper" tabindex="0"/>
       <div class="links">
-        <router-link to="/about" class="links__item">About Us</router-link>
-        <router-link to="/policy" class="links__item">Privacy Policy</router-link>
+        <router-link to="/about" class="links__item" tabindex="0">About Us</router-link>
+        <router-link to="/policy" class="links__item" tabindex="0">Privacy Policy</router-link>
       </div>
       <form class="subscribe-block" action="#" @submit.prevent="toRegistration">
         <input 
@@ -12,6 +12,7 @@
           placeholder="Enter your email" 
           class="subscribe-block__input" 
           v-model="email"
+          tabindex="0"
         >
         <input 
           type="submit" 
@@ -19,6 +20,7 @@
           value="Sign Up Now" 
           class="subscribe-block__submit" 
           @click.prevent="toRegistration"
+          tabindex="0"
         >
       </form>
     </div>

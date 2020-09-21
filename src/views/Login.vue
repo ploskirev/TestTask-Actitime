@@ -14,6 +14,7 @@
           class="login-form__input" 
           v-model="email" 
           placeholder="abc@abc.abc"
+          tabindex="0"
         >
       </div>
       <div class="login-form__item">
@@ -24,6 +25,7 @@
           class="login-form__input" 
           v-model="password" 
           placeholder="min 6 characters"
+          tabindex="0"
         >
       </div>
       <input 
@@ -32,16 +34,8 @@
         value="Login" 
         class="button" 
         @click.prevent="login"
+        tabindex="0"
       >
-      <!-- <div class="link-wrapper">
-        or you can 
-        <router-link 
-          to="/registration" 
-          class="link-wrapper__link"
-        >
-          Sign Up
-        </router-link>
-      </div> -->
       <div class="login-form__err">{{error}}</div>
     </form>
     <div class="link-wrapper">
@@ -49,6 +43,7 @@
       <router-link 
         to="/registration" 
         class="link-wrapper__link"
+        tabindex="0"
       >
         Sign Up
       </router-link>
@@ -180,7 +175,7 @@ export default {
 .link-wrapper {
   color: $text;
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   &__link {
     @include link($secondary, $secondaryHov, $secondary);

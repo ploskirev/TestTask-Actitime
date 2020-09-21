@@ -10,6 +10,7 @@
           class="registration-form__input" 
           v-model="email" 
           placeholder="abc@abc.abc"
+          tabindex="0"
         >
       </div>
       <div class="registration-form__item">
@@ -20,6 +21,7 @@
           class="registration-form__input" 
           v-model="password" 
           placeholder="min 6 characters"
+          tabindex="0"
         >
       </div>
       <input 
@@ -28,6 +30,7 @@
         value="Sign Up" 
         class="button" 
         @click="register"
+        tabindex="0"
       >
       <div class="registration-form__err">{{error}}</div>
     </form>
@@ -36,6 +39,7 @@
       <router-link 
         to="/login" 
         class="link-wrapper__link"
+        tabindex="0"
       >
         Login
       </router-link>
