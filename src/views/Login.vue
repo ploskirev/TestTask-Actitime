@@ -67,8 +67,8 @@ export default {
     ]
   },
   data: () => ({
-    email: 'test@actitime.ru',
-    password: '123456',
+    email: '',
+    password: '',
     inProcess: false
   }),
   computed: {
