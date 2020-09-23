@@ -183,7 +183,6 @@ export default {
     top: calc(100%);
     left: -23px;
     border: 1px solid $primary;
-    // padding: 10px 20px;
     padding: 10px 0;
     border-radius: 10px;
     box-shadow: 0 4px 0 #E2CEFE;
