@@ -57,7 +57,7 @@ export default {
       {name: 'keywords', content: 'actiTIME, Registration'}
     ]
   },
-  data() {
+  data: function() {
     return {
       inProcess: false,
       name: 'Registration',
@@ -66,21 +66,21 @@ export default {
     }
   },
   computed: {
-    error() {
+    error: function() {
       (this.$store.getters.error) && (this.inProcess = false);
       return this.$store.getters.error;
     },
-    updatedEmail() {
+    updatedEmail: function() {
       return this.$store.getters.emailFSU;
     }
   },
   watch: {
-    updatedEmail() {
+    updatedEmail: function() {
       this.email = this.updatedEmail;
     }
   },
   methods: {
-    register() {
+    register: function() {
       this.inProcess = true;
       this.$store.dispatch('register', {
         email: this.email,
@@ -92,12 +92,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* autoprefixer grid: autoplace */
+
 @import '../assets/styles/variables.scss';
 @import '../assets/styles/mixins.scss';
 
 .registration-page {
   justify-content: flex-start;
   padding-top: 30px;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .registration-heading {
@@ -108,6 +114,10 @@ export default {
   width: 500px;
   display: flex;
   flex-direction: column;
+
+  &:focus {
+    outline: none;
+  }
 
   @media (max-width: 767px) {
     & {

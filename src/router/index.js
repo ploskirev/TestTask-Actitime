@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from '../store/index.js';
+import Features from '../views/Features.vue';
 
 Vue.use(VueRouter);
 
@@ -8,42 +9,57 @@ const routes = [
   {
     path: '/',
     name: 'Features',
-    component: () => import(/* webpackChunkName: "features" */ '../views/Features.vue')
+    component: Features
+    // component: () => import(/* webpackChunkName: "features" */ '../views/Features.vue')
   },
   {
     path: '/feature/:id',
     name: 'Feature',
-    component: () => import(/* webpackChunkName: "feature" */ '../views/Feature.vue')
+    component: function() {
+      return import(/* webpackChunkName: "feature" */ '../views/Feature.vue');
+    }
   },
   {
     path: '/about',
     name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: function() {
+      return import(/* webpackChunkName: "about" */ '../views/About.vue');
+    }
   },
   {
     path: '/registration',
     name: 'Registration',
-    component: () => import(/* webpackChunkName: "registration" */ '../views/Registration.vue')
+    component: function() {
+      return import(/* webpackChunkName: "registration" */ '../views/Registration.vue');
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    component: function() {
+      return import(/* webpackChunkName: "login" */ '../views/Login.vue');
+    }
   },
   {
     path: '/policy',
     name: 'Policy',
-    component: () => import(/* webpackChunkName: "policy" */ '../views/Policy.vue')
+    component: function() {
+      return import(/* webpackChunkName: "policy" */ '../views/Policy.vue');
+    }
   },
   {
     path: '/userguide',
     name: 'User Guide',
-    component: () => import(/* webpackChunkName: "userguide" */ '../views/Userguide.vue')
+    component: function() {
+      return import(/* webpackChunkName: "userguide" */ '../views/Userguide.vue');
+    }
   },
   {
     path: '/support',
     name: 'Support',
-    component: () => import(/* webpackChunkName: "support" */ '../views/Support.vue')
+    component: function() {
+      return import(/* webpackChunkName: "support" */ '../views/Support.vue');
+    }
   }
 ]
 
@@ -64,4 +80,4 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-export default router
+export default router;

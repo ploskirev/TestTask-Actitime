@@ -21,10 +21,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* autoprefixer grid: autoplace */
+
 @import '../assets/styles/variables.scss';
 @import '../assets/styles/mixins.scss';
 
 .post {
+  justify-self: end;
   width: 390px;
   height: 358px;
   margin-bottom: 10px;
@@ -36,7 +39,17 @@ export default {
   color: $accent;
   box-shadow: 0 10px 0 #F5BD3F;
 
+  &:nth-child(1) {
+    -ms-grid-column: 1;
+  }
+
+  &:nth-child(2) {
+    -ms-grid-column: 3;
+  }
+
   &__heading {
+    max-height: 30px;
+    overflow: hidden;
     font-size: 25px;
     font-weight: 400;
     line-height: 1.3;
@@ -70,7 +83,7 @@ export default {
   &__number {
     position: absolute;
     top: 31px;
-    left: -64px;
+    left: -66px;
     font-size: 202px;
     font-weight: 700;
     color: $primary;
@@ -104,6 +117,7 @@ export default {
 
 @media (max-width: 767px) {
   .post {
+    justify-self: center;
     width: 100%;
     max-width: 390px;
     padding: 50px 30px;

@@ -25,7 +25,7 @@ export default {
   components: {
     SliderItem
   },
-  data() {
+  data: function() {
     return {
       currentPage: 1,
       windowSize: document.documentElement.clientWidth,
@@ -33,36 +33,38 @@ export default {
     }
   },
   computed: {
-    postsOnPage() {
+    postsOnPage: function() {
       return (this.windowSize < 1320) ? 1 : 2;
     },
-    pages() {
+    pages: function() {
       return this.topics.length / this.postsOnPage;
     },
-    topicsPage() {
+    topicsPage: function() {
       const startIdx = (this.currentPage - 1) * this.postsOnPage;
       const endIdx = startIdx + this.postsOnPage;
       return this.topics.slice(startIdx, endIdx);
     }
   },
   methods: {
-    onResize() {
+    onResize: function() {
       this.windowSize = document.documentElement.clientWidth;
     },
-    changeSlide(number) {
+    changeSlide: function(number) {
       this.currentPage = number;
     }
   },
-  mounted() {
+  mounted: function() {
     window.addEventListener('resize', this.onResize);
   },
-  beforeDestroy() {
+  beforeDestroy: function() {
     window.removeEventListener('resize', this.onResize);
   }
 }
 </script>
 
 <style lang="scss" scoped>
+/* autoprefixer grid: autoplace */
+
 @import '../assets/styles/variables.scss';
 
 .slider {
@@ -73,8 +75,10 @@ export default {
   padding: 97px 120px 60px 60px;
 
   &__page {
+    display: -ms-grid;
     display: grid;
     height: 368px;
+    -ms-grid-columns: 450px 90px 450px;
     grid-template-columns: repeat(2, 450px);
     justify-content: end;
     justify-items: end;
@@ -116,9 +120,8 @@ export default {
     padding-left: 52px;
 
     &__page {
-      grid-template-columns: 458px;
-      justify-content: center;
-      margin-left: 8px;
+      grid-template-columns: 487px;
+      justify-content: start;
     }
 
     &__button {

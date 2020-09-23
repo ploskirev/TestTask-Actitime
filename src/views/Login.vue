@@ -61,29 +61,31 @@ export default {
       {name: 'keywords', content: 'actiTIME, Login'}
     ]
   },
-  data: () => ({
-    email: '',
-    password: '',
-    inProcess: false
-  }),
+  data: function() {
+    return {
+      email: '',
+      password: '',
+      inProcess: false
+    }
+  },
   computed: {
-    user() {
+    user: function() {
       return this.$store.getters.user;
     },
-    error() {
+    error: function() {
       (this.$store.getters.error) && (this.inProcess = false);
       return this.$store.getters.error;
     }
   },
   methods: {
-    login() {
+    login: function() {
       this.inProcess = true;
       this.$store.dispatch('login', {
         email: this.email,
         password: this.password
       });
     },
-    logout() {
+    logout: function() {
       this.inProcess = false;
       this.$store.dispatch('logout');
     }
@@ -92,12 +94,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* autoprefixer grid: autoplace */
+
 @import '../assets/styles/variables.scss';
 @import '../assets/styles/mixins.scss';
 
 .login-page {
   justify-content: flex-start;
   padding-top: 30px;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .login-heading {
@@ -108,6 +116,10 @@ export default {
   width: 500px;
   display: flex;
   flex-direction: column;
+
+  &:focus {
+    outline: none;
+  }
 
   @media (max-width: 767px) {
     & {

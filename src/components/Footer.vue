@@ -35,13 +35,13 @@ export default {
   components: {
     Logo
   },
-  data() {
+  data: function() {
     return {
       email: ''
     }
   },
   methods: {
-    toRegistration() {
+    toRegistration: function() {
       this.$store.commit('setEmailFSU', this.email);
       (this.$route.path !== '/registration') && this.$router.push('/registration');
       this.email = '';
@@ -52,10 +52,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* autoprefixer grid: autoplace */
+
 @import '../assets/styles/variables.scss';
 @import '../assets/styles/mixins.scss';
 
 .footer {
+  -ms-grid-row: 3;
+  min-width: 100vw;
   display: flex;
   align-items: center;
   min-height: 197px;
@@ -63,6 +67,7 @@ export default {
 }
 
 .content {
+  display: -ms-grid;
   width: 1320px;
   margin: 0 auto;
   display: grid;
@@ -74,6 +79,9 @@ export default {
 }
 
 .links {
+  -ms-grid-column: 2;
+  justify-self: end;
+  align-self: center;
 
   &__item {
     @include link(#fff, $secondaryHov, $secondary);
@@ -85,6 +93,8 @@ export default {
 
 .subscribe-block {
   display: flex;
+  -ms-grid-column: 3;
+  justify-self: end;
 
   &__input {
     width: 419px;
@@ -191,6 +201,7 @@ export default {
     flex-direction: column;
     align-items: center;
     grid-area: form;
+    justify-self: stretch;
 
     &__input {
       width: 100%;

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "postcss": "postcss --use autoprefixer -o dist/css2/main.css dist/css/feature.35ab95cd.css"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -19,7 +20,11 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "autoprefixer": "^10.0.0",
     "node-sass": "^4.12.0",
+    "postcss": "^8.0.9",
+    "postcss-cli": "^8.0.0",
+    "postcss-nested": "^5.0.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   }

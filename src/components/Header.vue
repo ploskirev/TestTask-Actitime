@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <Logo :colored="true" tabindex="0" />
+    <Logo :colored="true" tabindex="0" class="header-logo" />
     <input type="checkbox" id="menu-toggler" v-model="menuToggle">
     <div class="nav-btn-wrapper">
       <nav class="main-menu">
@@ -64,19 +64,19 @@ export default {
   components: {
     Logo
   },
-  data() {
+  data: function() {
     return {
       menuToggle: false,
       submenuToggle: false
     }
   },
   computed: {
-    user() {
+    user: function() {
       return this.$store.getters.user;
     }
   },
   methods: {
-    updateMenu() {
+    updateMenu: function() {
       this.menuToggle = false;
       this.submenuToggle = false;
     }
@@ -85,6 +85,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* autoprefixer grid: autoplace */
+
 @import '../assets/styles/variables.scss';
 @import '../assets/styles/mixins.scss';
 
@@ -106,6 +108,10 @@ export default {
 }
 
 .header {
+  display: -ms-grid;
+  -ms-grid-row: 1;
+  align-self: center;
+  justify-self: center;
   display: grid;
   grid-template-columns: 49px 1fr;
   justify-items: end;
@@ -123,9 +129,19 @@ export default {
   }
 }
 
+.header-logo {
+  -ms-grid-column: 1;
+  align-self: center;
+}
+
 .nav-btn-wrapper {
+  display: -ms-grid;
+  -ms-grid-column: 2;
+  -ms-grid-row-align: center;
+  align-self: center;
   display: grid;
   grid-template-columns: 270px 1fr;
+  -ms-grid-columns: 270px 1fr;
   width: 100%;
   justify-items: end;
   padding-left: 130px;
@@ -133,7 +149,10 @@ export default {
 }
     
 .main-menu {
+  align-self: center;
+
   &__general {
+    -ms-grid-column: 1;
     display: flex;
     color: $accent;
   }
@@ -164,7 +183,8 @@ export default {
     top: calc(100%);
     left: -23px;
     border: 1px solid $primary;
-    padding: 10px 20px;
+    // padding: 10px 20px;
+    padding: 10px 0;
     border-radius: 10px;
     box-shadow: 0 4px 0 #E2CEFE;
     font-weight: 400;
@@ -186,6 +206,7 @@ export default {
     }
 
     .main-menu__item {
+      width: 100%;
       padding: 0;
       font-size: 16px;
       line-height: 220%;
@@ -194,6 +215,11 @@ export default {
       &:hover {
         color: $accentHov;
       }
+    }
+
+    .main-menu__link {
+      width: 100%;
+      padding: 0 20px;
     }
   }
 
@@ -228,6 +254,12 @@ export default {
   }
 }
 
+.button-wrapper {
+  -ms-grid-column: 2;
+  justify-self: end;
+  align-self: center;
+}
+
 .button {
   @include button (180px, 60px, 18px, #fff, $primary, $primaryHov);
 }
@@ -242,6 +274,8 @@ export default {
     align-content: center;
 
     &__burger {
+      -ms-grid-column: 2;
+      justify-self: end;
       display: block;
       position: relative;
       width: 36px;
@@ -296,11 +330,15 @@ export default {
 
   .main-menu {
     &__general {
+      display: -ms-grid;
       display: grid;
+      -ms-grid-rows: minmax(75px, auto);
       grid-auto-rows: minmax(75px, auto);
     }
 
     &__item {
+      justify-self: stretch;
+      width: 100vw;
       height: 75px;
       padding-left: 32px;
       padding-right: 32.5px;
@@ -311,7 +349,16 @@ export default {
       transition: margin-bottom .5s;
 
       &:first-child {
+        -ms-grid-row: 1;
         border-top: 1px solid #d6b9ff;
+      }
+
+      &:nth-child(2) {
+        -ms-grid-row: 2;
+      }
+
+      &:nth-child(3) {
+        -ms-grid-row: 3;
       }
     }
 
@@ -346,6 +393,10 @@ export default {
 
   #menu-toggler:checked {
     & ~ label.header__burger {
+      &:focus {
+        outline-color: transparent;
+      }
+
       &::before {
         transform: translateY(14px) rotate(45deg);
       }

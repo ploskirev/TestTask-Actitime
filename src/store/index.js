@@ -38,31 +38,44 @@ export default new Vuex.Store({
     ]
   },
   getters: {
-    user: state => state.currentUser,
-    topics: state => state.sliderTopics,
-    topicById: state => id => state.sliderTopics.find(topic => topic.id === id),
-    emailFSU: state => state.emailForSignUp,
-    error: state => state.firebaseError
+    user: function(state) {
+      return state.currentUser;
+    },
+    topics: function(state) {
+      return state.sliderTopics;
+    },
+    topicById: function(state) {
+      return function(id) {
+        return state.sliderTopics.find(topic => topic.id === id);
+      }
+    },
+    emailFSU: function(state) {
+      return state.emailForSignUp;
+    },
+    error: function(state) {
+      return state.firebaseError;
+    },
   },
   mutations: {
-    setEmailFSU(state, email) {
+    setEmailFSU: function(state, email) {
       state.emailForSignUp = email;
     },
-    setUser(state, user) {
+    setUser: function(state, user) {
       state.currentUser = user;
     },
-    clearUser(state) {
+    clearUser: function(state) {
       state.currentUser = null;
     },
-    setError(state, error) {
+    setError: function(state, error) {
       state.firebaseError = error;
+      console.log(state);
     },
-    clearError(state) {
+    clearError: function(state) {
       state.firebaseError = '';
     }
   },
   actions: {
-    async login({commit}, {email, password}) {
+    login: async function({commit}, {email, password}) {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password);
         commit('ClearError');
@@ -72,7 +85,7 @@ export default new Vuex.Store({
         commit('setError', err.message);
       }
     },
-    async logout({commit}) {
+    logout: async function({commit}) {
       try {
         await firebase.auth().signOut();
         commit('ClearError');
@@ -82,7 +95,7 @@ export default new Vuex.Store({
         commit('setError', err.message);
       }
     },
-    async register({commit}, {email, password}) {
+    register: async function({commit}, {email, password}) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
         commit('ClearError');

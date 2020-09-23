@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <main>
+    <div role="main">
       <router-view />
-    </main>
+    </div>
     <Footer />
   </div>
 </template>
@@ -20,11 +20,13 @@ export default {
 </script>
 
 <style lang="scss">
+/* autoprefixer grid: autoplace */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import './assets/styles/variables.scss';
 
 .moke-page {
-  height: 100%;
+  height: calc(100vh - 287px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,19 +38,26 @@ export default {
 }
 
 *:focus {
-    outline-color: $third;
-  }
+  outline: 1px solid transparentize($color: $third, $amount: .7);
+}
 
 #app {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: grid;
+  display: -ms-grid;
   grid-template-rows: 90px 1fr 197px;
+  -ms-grid-rows: 90px 1fr 197px;
   min-height: 100vh;
+  min-width: 100vw;
   -webkit-tap-highlight-color: transparent;
 
-  main {
+  div[role="main"] {
+    -ms-grid-row: 2;
+    min-height: calc(100vh - 287px);
+    align-self: center;
+    justify-self: center;
     width: 1320px;
     margin: 0 auto;
     text-align: center;
@@ -64,7 +73,7 @@ export default {
   #app {
     grid-template-rows: 86px 1fr 177px;
 
-    main {
+    div[role="main"] {
       width: 100vw;
     }
   }
@@ -74,7 +83,7 @@ export default {
   #app {
     grid-template-rows: 80px 1fr 344px;
 
-    main {
+    div[role="main"] {
       h1 {
         font-size: 35.5px;
       }

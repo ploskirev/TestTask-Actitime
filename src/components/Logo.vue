@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/">
+  <router-link to="/" class="logo-wrapper">
     <div class="logo" :class="{logo_colored: colored}"></div>
   </router-link>
 </template>
@@ -14,6 +14,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.logo-wrapper {
+  display: block;
+  height: 35px;
+  width: 49px;
+}
+
 .logo {
   display: flex;
   align-items: flex-end;

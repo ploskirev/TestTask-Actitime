@@ -15,13 +15,13 @@ export default {
       {name: 'keywords', content: 'actiTIME, Feature'}
     ]
   },
-  data() {
+  data: function() {
     return {
       id: this.$route.params.id
     }
   },
   computed: {
-    topic() {
+    topic: function() {
       return this.$store.getters.topicById(this.id);
     }
   }
@@ -29,6 +29,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* autoprefixer grid: autoplace */
+
 @import '../assets/styles/variables.scss';
 
 .feature-page {
